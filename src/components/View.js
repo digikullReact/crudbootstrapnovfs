@@ -49,7 +49,7 @@ const View = (props) => {
             <td>{ele.attributes.name}</td>
             <td>{ele.attributes.publishedAt}</td>
             <td>{ele.attributes.updatedAt}</td>
-            <td style={{cursor:"pointer"}}><GrEdit/></td>
+            <td style={{cursor:"pointer"}} onClick={()=>props.getEditData(ele)}><GrEdit/></td>
             <td style={{cursor:"pointer"}}><AiFillDelete/></td>
           </tr>
 

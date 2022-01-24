@@ -5,11 +5,15 @@ import View from './components/View';
 import { Row,Col,Container,Button} from 'react-bootstrap';
 import AddEdit from './components/AddEdit';
 import axios from 'axios';
+import EditData from './components/EditData';
 
 
 function App() {
 
 const [showPopup,setShowPopup]=useState(false);
+const [showEditPopup,setShowEditPopup]=useState(false);
+
+const [editName,setEditName]=useState({});
 const openPopup=()=>{
   setShowPopup(true);
 
@@ -17,6 +21,29 @@ const openPopup=()=>{
 
 const handleClose=()=>{
   setShowPopup(false);
+
+}
+
+
+
+// For Edit Popup
+
+const openEditPopup=()=>{
+  setShowEditPopup(true);
+
+}
+
+const handleEditClose=()=>{
+  setShowEditPopup(false);
+
+}
+
+const getEditData=(data)=>{
+  debugger;
+
+  setEditName(data);
+
+  setShowEditPopup(true);
 
 }
 
@@ -50,6 +77,7 @@ const Addrestaurant=(name)=>{
     <Container>
 
       <AddEdit show={showPopup} handleClose={handleClose} Addrestaurant={Addrestaurant}/>
+      <EditData show={showEditPopup} handleClose={handleEditClose} data={editName} />
 
 <Row style={{marginTop:"100px"}}>
 <Col md={{ span: 8, offset: 2 }}>
@@ -63,7 +91,7 @@ const Addrestaurant=(name)=>{
   <Row  style={{marginTop:"100px"}}>
     <Col md={{ span: 8, offset: 2 }}>
 
-    <View showPopup={showPopup}/>
+    <View showPopup={showPopup} getEditData={getEditData}/>
     </Col>
   </Row>
 </Container>
