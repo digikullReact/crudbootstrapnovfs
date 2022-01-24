@@ -5,7 +5,7 @@ import {  GrEdit} from 'react-icons/gr';
 import {AiFillDelete} from 'react-icons/ai'
 //GrEdit
 
-const View = () => {
+const View = (props) => {
     const [state,setState]=useState([]);
 
 
@@ -24,7 +24,7 @@ const View = () => {
 
         getData();
 
-    },[])
+    },[props.showPopup])
 
 
 

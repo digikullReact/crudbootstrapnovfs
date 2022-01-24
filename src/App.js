@@ -4,6 +4,7 @@ import './App.css';
 import View from './components/View';
 import { Row,Col,Container,Button} from 'react-bootstrap';
 import AddEdit from './components/AddEdit';
+import axios from 'axios';
 
 
 function App() {
@@ -25,6 +26,21 @@ const Addrestaurant=(name)=>{
 
   //
   // axios add data --->
+  const obj={ 
+    data: {
+      name:name
+    }
+  }
+  
+
+  axios.post("http://104.251.223.235:1337/api/restaurants",obj).then(data=>{
+    //console.log(data["data"]);
+    setShowPopup(false);
+
+
+  }).catch(err=>{
+    console.log(err);
+  })
 
 
 
@@ -47,7 +63,7 @@ const Addrestaurant=(name)=>{
   <Row  style={{marginTop:"100px"}}>
     <Col md={{ span: 8, offset: 2 }}>
 
-    <View/>
+    <View showPopup={showPopup}/>
     </Col>
   </Row>
 </Container>
