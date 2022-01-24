@@ -1,24 +1,57 @@
-import logo from './logo.svg';
+import React,{useState} from 'react';
+
 import './App.css';
+import View from './components/View';
+import { Row,Col,Container,Button} from 'react-bootstrap';
+import AddEdit from './components/AddEdit';
+
 
 function App() {
+
+const [showPopup,setShowPopup]=useState(false);
+const openPopup=()=>{
+  setShowPopup(true);
+
+}
+
+const handleClose=()=>{
+  setShowPopup(false);
+
+}
+
+
+const Addrestaurant=(name)=>{
+  debugger;
+
+  //
+  // axios add data --->
+
+
+
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+
+      <AddEdit show={showPopup} handleClose={handleClose} Addrestaurant={Addrestaurant}/>
+
+<Row style={{marginTop:"100px"}}>
+<Col md={{ span: 8, offset: 2 }}>
+
+<Button variant="primary" onClick={openPopup}>Add Data</Button>{' '}
+</Col>
+
+</Row>
+
+
+  <Row  style={{marginTop:"100px"}}>
+    <Col md={{ span: 8, offset: 2 }}>
+
+    <View/>
+    </Col>
+  </Row>
+</Container>
+  
   );
 }
 
