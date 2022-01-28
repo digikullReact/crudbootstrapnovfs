@@ -33,13 +33,44 @@ const openEditPopup=()=>{
 
 }
 
+
+// For making edit api call
+
+const editApiCall=(restaurant,id)=>{
+
+
+  // I have to make an api call in the backend
+
+  const obj={
+    "data": {
+      "name": restaurant,
+     
+    }
+  }
+
+  axios.put("http://104.251.223.235:1337/api/restaurants/"+id,obj).then(data=>{
+
+
+    //console.log(data["data"]);
+    setShowEditPopup(false);
+
+
+  }).catch(err=>{
+    console.log(err);
+  })
+
+
+
+}
+
 const handleEditClose=()=>{
   setShowEditPopup(false);
 
 }
 
 const getEditData=(data)=>{
-  debugger;
+
+
 
   setEditName(data);
 
@@ -77,7 +108,7 @@ const Addrestaurant=(name)=>{
     <Container>
 
       <AddEdit show={showPopup} handleClose={handleClose} Addrestaurant={Addrestaurant}/>
-      <EditData show={showEditPopup} handleClose={handleEditClose} data={editName} />
+      <EditData show={showEditPopup} handleClose={handleEditClose} data={editName} Addrestaurant={editApiCall} />
 
 <Row style={{marginTop:"100px"}}>
 <Col md={{ span: 8, offset: 2 }}>
@@ -91,7 +122,7 @@ const Addrestaurant=(name)=>{
   <Row  style={{marginTop:"100px"}}>
     <Col md={{ span: 8, offset: 2 }}>
 
-    <View showPopup={showPopup} getEditData={getEditData}/>
+    <View  showEditPopup={showEditPopup} showPopup={showPopup} getEditData={getEditData}/>
     </Col>
   </Row>
 </Container>

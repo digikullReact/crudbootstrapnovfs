@@ -24,7 +24,7 @@ const View = (props) => {
 
         getData();
 
-    },[props.showPopup])
+    },[props.showPopup,props.showEditPopup])
 
 
 
