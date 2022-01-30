@@ -1,17 +1,36 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import View from './View';
 import { Row,Col,Container,Button} from 'react-bootstrap';
 import AddEdit from './AddEdit';
 import axios from 'axios';
 import EditData from './EditData';
+import { TokenExists, useBackGroundColor } from './utils';
 
 export const Home = () => {
+
+  const data=useBackGroundColor();
+
+
+  useEffect(()=>{
+    const exists=TokenExists();
+
+   
+
+
+   if( !exists ){
+     window.location.href="/login"
+
+   }
+
+  },[])
+
 
     const [showPopup,setShowPopup]=useState(false);
 const [showEditPopup,setShowEditPopup]=useState(false);
 
 const [editName,setEditName]=useState({});
 const openPopup=()=>{
+  
   setShowPopup(true);
 
 }

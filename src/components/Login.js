@@ -3,7 +3,7 @@ import React ,{useState}from 'react';
 import { Col, Container, Form,Row ,Button} from 'react-bootstrap';
 import { useNavigate } from "react-router-dom";
 
-const Login = () => {
+export const Login = () => {
     let navigate = useNavigate();
 
     const [state,setState]=useState({
@@ -24,6 +24,7 @@ const loginApi=()=>{
 
     if(data["data"])
     {
+      localStorage.setItem("token",data["data"].id)
         // user logged in
         // i want them to redirect to another page 
 
@@ -77,5 +78,7 @@ const loginApi=()=>{
   )
  
 };
+export var k=9
 
-export default Login;
+
+

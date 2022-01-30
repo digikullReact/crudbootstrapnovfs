@@ -3,10 +3,13 @@ import { Table} from 'react-bootstrap';
 import axios from 'axios';
 import {  GrEdit} from 'react-icons/gr';
 import {AiFillDelete} from 'react-icons/ai'
+import { useNavigate } from 'react-router-dom';
+
 //GrEdit
 
 const View = (props) => {
     const [state,setState]=useState([]);
+    const navigate=useNavigate();
 
 
     const getData=()=>{
@@ -27,6 +30,9 @@ const View = (props) => {
     },[props.showPopup,props.showEditPopup])
 
 
+    const move=()=>{
+    navigate("/anywhere")
+    }
 
 
   return <Table striped bordered hover>
@@ -58,6 +64,7 @@ const View = (props) => {
 
    
   </tbody>
+
 </Table>;
 };
 
